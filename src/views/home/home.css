@@ -1,0 +1,66 @@
+.title h4 {
+  font-family: "Mochiy Pop One", sans-serif;
+  color: white;
+  margin: 0;
+  line-height: 30px;
+  font-size: 1.5rem;
+}
+.title h3 {
+  color: white;
+  margin: 0;
+  font-size: 0.8rem;
+  font-family: "Poppins", sans-serif;
+}
+.title {
+  gap: 10px;
+  cursor: pointer;
+  top: 20%;
+  width: 40%;
+}
+.title h5 {
+  font-size: 1rem !important;
+  color: white;
+  margin: 0;
+}
+.title h5:hover {
+  color: turquoise;
+}
+.title h4:hover {
+  color: turquoise;
+}
+.card {
+  transition: 0.5s ease-out;
+}
+.card:hover {
+  transform: scale(1.035);
+}
+.search input::placeholder {
+  font-size: 15px;
+  color: white;
+}
+textarea:focus,
+.search input:focus {
+  outline: none;
+}
+.search {
+  margin-top: 50px;
+}
+
+.search input {
+  font-size: 20px;
+}
+.MuiPagination-root button {
+  color: white !important;
+}
+.MuiPaginationItem-root {
+  color: white !important;
+}
+.MuiPagination-ul {
+  height: 100% !important;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+.selected span {
+  color: turquoise !important;
+}
