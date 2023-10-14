@@ -3,6 +3,7 @@ import { AuthContext } from '../../store/AuthContext'
 import "./login.css"
 
 function Login() {
+
     const email = useRef()
     const { login } = useContext(AuthContext)
     const [signindata, setSignindata] = useState({
@@ -21,6 +22,7 @@ function Login() {
     useEffect(() => {
         email.current.focus()
     }, [])
+
     return (
         <div className='login'>
             <div className='login-form'>
