@@ -11,7 +11,7 @@ function Header() {
         <div className='header' >
             <div className='header-inner'>
                 <div className='header-sub' >
-                    <h6 style={{ fontSize: "30px", margin: "0", color: "white" }}>The Rick and Morty</h6>
+                    <h6 style={{ fontSize: "20px", margin: "0", color: "white" }}>The Rick and Morty</h6>
                 </div>
                 <div onClick={() => { logout() }} className='header-sub' >
                     <Buttonwhite text={"Sign out"} />
