@@ -8,6 +8,11 @@ This is a React-based web application that interacts with the Rick and Morty API
 - Search functionality to quickly find specific characters.
 - Pagination for browsing through large sets of characters.
 
+For testing purposes, you can use the following login credentials:
+
+- Email: test@gmail.com
+- Password: 12345678  
+
 ## Demo
 
 For a live demo, you can visit [https://rick-n-morty-ui.netlify.app/](https://rick-n-morty-ui.netlify.app/).
@@ -28,7 +33,6 @@ To get a local copy up and running, follow these steps:
 4. Navigate through pages using pagination.
 
 ## Screenshots
-
 
 ![Web Interface](https://github.com/edwinjzph/rick-n-morty-ui/assets/83514834/72426e5b-4bbc-423a-9a50-1c8655e314f9)
 
