@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Alert, Snackbar } from '@mui/material';
 
 export const AuthContext = React.createContext({
     authenticated: false,
@@ -8,20 +9,26 @@ export const AuthContext = React.createContext({
 
 export const AuthContextProvider = ({ children }) => {
     const [authenticated, setAuthenticated] = useState(false)
+    const [open, setOpen] = React.useState(["", "success"]);
     const loginHandler = ({
         email,
         password
     }) => {
-        setAuthenticated(true)
         if (email !== "" && password !== "") {
-            setAuthenticated(true)
             if (email.includes("@") && password.length >= 7) {
-                setAuthenticated(true)
+                if (email === "test@gmail.com" && password === "12345678") {
+                    setOpen(["Login successful", "success"]);
+                    setAuthenticated(true)
+                }
             } else {
                 console.log("Passwords should have 7 characters or email should include @")
+                setOpen(["Passwords should have 7 characters or email should include @", "error"]);
+
             }
         } else {
             console.log("Email or password required")
+            setOpen(["Email or password required", "error"]);
+
         }
     }
 
@@ -33,17 +40,35 @@ export const AuthContextProvider = ({ children }) => {
         console.log(authenticated)
     }
 
-    return (
-        <AuthContext.Provider
-            value={{
-                authenticated: authenticated,
-                logout: signout,
-                login: loginHandler,
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(["", "success"]);
+    };
 
-            }}
-        >
-            {children}
-        </AuthContext.Provider>
+    return (
+        <>
+            <Snackbar open={open[0] !== ""} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity={open[1]} sx={{ width: '100%' }}>
+                    {open[0]}
+                </Alert>
+            </Snackbar>
+
+            <AuthContext.Provider
+                value={{
+                    authenticated: authenticated,
+                    logout: signout,
+                    login: loginHandler,
+
+                }}
+            >
+                {children}
+            </AuthContext.Provider>
+        </>
+
+
+
     )
 
 }

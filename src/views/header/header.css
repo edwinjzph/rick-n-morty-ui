@@ -23,3 +23,8 @@
 .header-sub h6 {
   font-family: "Poppins", sans-serif;
 }
+@media only screen and (max-width: 800px) {
+  .header-sub h6 {
+    font-size: 18px !important;
+  }
+}
