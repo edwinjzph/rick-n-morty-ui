@@ -10,7 +10,7 @@ This is a React-based web application that interacts with the Rick and Morty API
 
 ## Demo
 
-For a live demo, you can visit [Demo Link Here](demo_link_here).
+For a live demo, you can visit [Demo Link Here](https://rick-n-morty-ui.netlify.app/).
 
 ## Getting Started
 
