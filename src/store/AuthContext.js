@@ -19,6 +19,8 @@ export const AuthContextProvider = ({ children }) => {
                 if (email === "test@gmail.com" && password === "12345678") {
                     setOpen(["Login successful", "success"]);
                     setAuthenticated(true)
+                } else {
+                    setOpen(["Invalid credentials", "error"]);
                 }
             } else {
                 console.log("Passwords should have 7 characters or email should include @")

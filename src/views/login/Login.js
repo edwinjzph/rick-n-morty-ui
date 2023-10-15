@@ -19,7 +19,7 @@ function Login() {
     }
 
     const handleSubmit = () => {
-        const error = login(signindata)
+        login(signindata)
     }
     useEffect(() => {
         email.current.focus()

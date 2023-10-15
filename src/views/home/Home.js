@@ -14,7 +14,6 @@ function Home() {
     const [loading, setLoading] = useState(true)
     const [selectedcharacter, setSelectedcharacter] = useState({})
     const [selectedid, setSelectedid] = useState(1)
-    const [open, setOpen] = React.useState(["", "success"]);
     const [opendetails, setOpendetails] = useState(false)
     const [search, setSearch] = useState({
         name: "",
