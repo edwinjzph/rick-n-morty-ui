@@ -2,9 +2,11 @@ import React, { useContext } from 'react'
 import "./header.css"
 import { AuthContext } from '../../store/AuthContext'
 import Button from '@mui/material/Button';
+import Switch from '@mui/material/Switch';
 
-function Header() {
+function Header({ handleChange, checked }) {
     const { logout, authenticated } = useContext(AuthContext)
+
 
     return (
         <div className='header' >
@@ -15,8 +17,14 @@ function Header() {
                 {authenticated &&
                     <div className='header-sub' >
                         <Button onClick={() => { logout() }} className='mui-button' sx={{ background: "turquoise", color: "black" }} variant="contained">Sign out</Button>
+                        <Switch
+                            checked={checked}
+                            onChange={handleChange}
+                            inputProps={{ 'aria-label': 'controlled' }}
+                        />
                     </div>
                 }
+
 
             </div>
 

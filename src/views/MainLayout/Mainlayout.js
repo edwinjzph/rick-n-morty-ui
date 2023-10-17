@@ -5,13 +5,15 @@ import { AuthContext } from '../../store/AuthContext'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-    },
-});
 
-function Mainlayout() {
+
+function Mainlayout({ checked }) {
+    const darkTheme = createTheme({
+        palette: {
+            mode: `${checked ? "dark" : "light"}`
+        },
+    });
+
     const { authenticated } = useContext(AuthContext)
     return (
         <ThemeProvider theme={darkTheme}>

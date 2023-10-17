@@ -6,16 +6,18 @@ import Card from '../../components/card/Card';
 import setSearchfilter from '../../helpers/setSearchfilter';
 import getCharacters from '../../helpers/getCharacters';
 import Loader from '../loader/Loader';
-import Details from '../../components/details/Details';
 import getCharacter from '../../helpers/getCharacter';
 import { TextField } from '@mui/material';
+import Dialog from '@mui/material/Dialog';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { IconButton } from '@mui/material';
+
 
 function Home() {
     const [characters, setCharacters] = useState({})
     const [loading, setLoading] = useState(true)
     const [selectedcharacter, setSelectedcharacter] = useState({})
     const [selectedid, setSelectedid] = useState(1)
-    const [opendetails, setOpendetails] = useState(false)
     const [search, setSearch] = useState({
         name: "",
         page: 1,
@@ -35,6 +37,15 @@ function Home() {
         { filter: "human", arg: "species", selected: false },
         { filter: "alien", arg: "species", selected: false },
     ])
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const handleChangepage = (event, value) => {
         setSearch((prevState) => {
@@ -55,24 +66,50 @@ function Home() {
     console.log(selectedcharacter)
 
     useEffect(() => {
-        if (opendetails === true) {
-            getCharacter(setSelectedcharacter, selectedid)
-        }
-    }, [selectedid, opendetails])
+
+        getCharacter(setSelectedcharacter, selectedid)
+
+        console.log("hello")
+    }, [selectedid])
 
     const handleChange = (e) => {
         setSearch((prevState) => {
             return { ...prevState, page: 1, [e.target.name]: e.target.value, }
         })
     }
-    console.log(opendetails, selectedid)
-
-
     return (
         <div className="home" style={{ width: "100%", marginTop: "100px" }}>
-            {(opendetails && (Object.keys(selectedcharacter)).length > 0) &&
-                <Details selectedcharacter={selectedcharacter} setOpendetails={setOpendetails} setSelectedcharacter={setSelectedcharacter} />
-            }
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                {Object.keys(selectedcharacter).length > 0 &&
+
+                    <div className="info-main" style={{ position: "fixed", left: "0px", right: "0px", margin: "auto", zIndex: "300", background: "#111", width: "50%", borderRadius: "10px", display: "flex", justifyContent: "top", top: "30%" }}>
+
+
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px", padding: "10px", width: "50%" }}>
+
+                            <img alt={selectedcharacter.name} style={{ height: "200px", borderRadius: "50%" }} src={selectedcharacter?.image}></img>
+                            <h3 style={{ color: "white" }}>{selectedcharacter?.name}</h3>
+
+                        </div>
+                        <div className="info" style={{ color: "white", margin: "0" }}>
+                            <h3 >INFO</h3>
+                            <h3>Status : {selectedcharacter?.status}</h3>
+                            <h3>species : {selectedcharacter?.species}</h3>
+                            <h3>Gender : {selectedcharacter?.gender}</h3>
+                            <h3>Origin : {selectedcharacter?.origin.name}</h3>
+                            <h3>Location : {selectedcharacter?.location.name}</h3>
+                        </div>
+                    </div>
+                }
+
+            </Dialog>
+
+
 
 
             <div className='home-sub' style={{ width: "80%", margin: "auto", marginBottom: "50px" }}>
@@ -81,7 +118,7 @@ function Home() {
                     <div className="scroll" style={{ display: "flex", height: "40px", width: "80%", margin: "auto", gap: "10px", overflowX: "scroll", marginTop: "10px" }}>
                         {filtervariables.map((value, index) => {
                             return (
-                                <div key={index} className={`sort ${value.selected && "selected"}`} onClick={() => { setSearchfilter(index, value.arg, value.filter, search, setSearch, filtervariables) }} style={{ background: "black", display: "flex", justifyContent: "center", padding: "10px", borderRadius: "10px", cursor: "pointer", width: "70px", opacity: ".6" }}>
+                                <div key={index} className={`sort ${value.selected && "selected"}`} onClick={() => { setSearchfilter(index, value.arg, value.filter, search, setSearch, filtervariables) }} style={{ background: "black", display: "flex", justifyContent: "center", padding: "10px", borderRadius: "10px", cursor: "pointer", width: "70px" }}>
                                     <span style={{ color: "white" }}>{value.filter}</span>
                                 </div>
                             )
@@ -100,7 +137,7 @@ function Home() {
                         {Object.keys(characters).length > 0 && Object.values(characters?.results).map((element, index) => {
                             return (
                                 <Grid item xs={2} sm={2} md={4} key={index}>
-                                    <Card setSelectedid={setSelectedid} setOpendetails={setOpendetails} element={element} />
+                                    <Card handleClickOpen={handleClickOpen} open={open} handleClose={handleClose} setSelectedid={setSelectedid} element={element} />
                                 </Grid>
                             )
                         }
@@ -108,6 +145,7 @@ function Home() {
                     </Grid>}
 
                 <div style={{ height: "50px", justifyContent: "center", display: "flex", position: "fixed", bottom: "25px", left: "0", right: "0", backgroundColor: "black", width: "max-content", margin: "auto", borderRadius: "10px" }}>
+
                     <Pagination count={characters?.info?.pages} page={search.page} onChange={handleChangepage} />
                 </div>
 

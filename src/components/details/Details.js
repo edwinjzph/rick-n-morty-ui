@@ -5,6 +5,7 @@ import { IconButton } from '@mui/material';
 
 function Details({ selectedcharacter, setOpendetails, setSelectedcharacter }) {
   return (
+
     <div className="info-main" style={{ position: "fixed", left: "0px", right: "0px", margin: "auto", zIndex: "300", background: "#111", width: "50%", borderRadius: "10px", display: "flex", justifyContent: "top", top: "30%" }}>
       <IconButton style={{ color: "white", position: "absolute", right: "-1%", top: "-2%", padding: "0" }} size='large' onClick={() => { setOpendetails(false); setSelectedcharacter({}); }}>
         <CancelIcon></CancelIcon>
