@@ -7,7 +7,7 @@ function Card({ element, setSelectedid, setOpendetails }) {
       <img src={element.image} alt={element.name} style={{ height: "100%", objectFit: "cover", borderRadius: "15px 0 0 15px", width: "50%" }}></img>
       <div style={{ position: "absolute", width: "70%", height: "100%", right: "0", background: "linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 100%)", borderRadius: " 0 15px  15px 0", }}></div>
       <div className='title' style={{ display: "flex", position: "absolute", right: "5%", flexDirection: "column", width: "40%" }}><h4 >{element.name}</h4>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
           <div style={{ height: "8px", width: "8px", background: `${(element.status === 'Alive') ? "green" : "red"}`, borderRadius: "50%" }}></div>
           <h3>{element.status}-{element.species}</h3>
         </div>

@@ -4,7 +4,7 @@
   height: 100vh;
 }
 .login-form {
-  width: 400px;
+  width: 30%;
   gap: 14px;
   display: flex;
   flex-direction: column;
@@ -13,16 +13,7 @@
 .login-form input::placeholder {
   color: white;
 }
-.login-form button {
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  background: turquoise;
-  border: none;
-  border-radius: 13px;
-}
+
 @media only screen and (max-width: 800px) {
   .login-form {
     width: 80%;
@@ -30,4 +21,7 @@
 }
 .login-form input {
   color: white;
+}
+.mui-button:hover {
+  background-color: turquoise !important;
 }

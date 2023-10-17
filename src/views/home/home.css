@@ -82,7 +82,7 @@ textarea:focus,
   background-color: turquoise !important;
   color: black !important;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1300px) {
   .title h5 {
     display: none;
   }

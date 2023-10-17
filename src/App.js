@@ -1,4 +1,3 @@
-
 import './App.css';
 import { AuthContextProvider } from './store/AuthContext';
 import Header from './views/header/Header';
@@ -15,6 +14,8 @@ function App() {
         <Header />
         <Mainlayout />
       </AuthContextProvider>
+
+
 
     </div>
   );

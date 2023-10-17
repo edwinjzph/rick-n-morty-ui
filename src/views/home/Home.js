@@ -8,6 +8,7 @@ import getCharacters from '../../helpers/getCharacters';
 import Loader from '../loader/Loader';
 import Details from '../../components/details/Details';
 import getCharacter from '../../helpers/getCharacter';
+import { TextField } from '@mui/material';
 
 function Home() {
     const [characters, setCharacters] = useState({})
@@ -48,8 +49,10 @@ function Home() {
             setLoading(false)
         })
 
+
+
     }, [search])
-    console.log(selectedcharacter)     c: \Users\User\Desktop\server
+    console.log(selectedcharacter)
 
     useEffect(() => {
         if (opendetails === true) {
@@ -74,7 +77,7 @@ function Home() {
 
             <div className='home-sub' style={{ width: "80%", margin: "auto", marginBottom: "50px" }}>
                 <div className='search' style={{ width: "100%", display: "flex", justifyContent: "center", marginBottom: "20px", flexDirection: "column", gap: "10px" }}>
-                    <input onChange={handleChange} name="name" placeholder='Search' style={{ width: "80%", padding: "14px", margin: "auto", border: "none", borderRadius: "10px", backgroundColor: "gray", color: "white" }}></input>
+                    <TextField value={search.name} fullwidth onChange={handleChange} id="outlined-basic" label="Search" variant="outlined" name='name' />
                     <div className="scroll" style={{ display: "flex", height: "40px", width: "80%", margin: "auto", gap: "10px", overflowX: "scroll", marginTop: "10px" }}>
                         {filtervariables.map((value, index) => {
                             return (
