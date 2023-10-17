@@ -88,7 +88,9 @@ function Home() {
                 {Object.keys(selectedcharacter).length > 0 &&
 
                     <div className="info-main" style={{ position: "fixed", left: "0px", right: "0px", margin: "auto", zIndex: "300", background: "#111", width: "50%", borderRadius: "10px", display: "flex", justifyContent: "top", top: "30%" }}>
-
+                        <IconButton style={{ color: "white", position: "absolute", right: "-1%", top: "-2%", padding: "0", }} size='large' onClick={() => { handleClose() }}>
+                            <CancelIcon></CancelIcon>
+                        </IconButton>
 
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px", padding: "10px", width: "50%" }}>
 
