@@ -24,40 +24,46 @@ function Home() {
         type: ""
     })
 
-    const [filtervariables] = useState([{ filter: "alive", arg: "status", selected: false },
-    { filter: "dead", arg: "status", selected: false },
-    { filter: "unknown", arg: "status", selected: false },
-    { filter: "male", arg: "gender", selected: false },
-    { filter: "female", arg: "gender", selected: false },
-    { filter: "genderless", arg: "gender", selected: false },
-    { filter: "human", arg: "species", selected: false },
-    { filter: "alien", arg: "species", selected: false }])
+    const [filtervariables] = useState([
+        { filter: "alive", arg: "status", selected: false },
+        { filter: "dead", arg: "status", selected: false },
+        { filter: "unknown", arg: "status", selected: false },
+        { filter: "male", arg: "gender", selected: false },
+        { filter: "female", arg: "gender", selected: false },
+        { filter: "genderless", arg: "gender", selected: false },
+        { filter: "human", arg: "species", selected: false },
+        { filter: "alien", arg: "species", selected: false },
+    ])
 
     const handleChangepage = (event, value) => {
-        const page = "page"
         setSearch((prevState) => {
-            return { ...prevState, [page]: value }
+            return { ...prevState, page: value }
         });
     };
 
     useEffect(() => {
         setLoading(true)
+
         getCharacters(setCharacters, search).then(() => {
             setLoading(false)
         })
 
     }, [search])
+    console.log(selectedcharacter)     c: \Users\User\Desktop\server
 
     useEffect(() => {
-        getCharacter(setSelectedcharacter, selectedid)
-    }, [selectedid])
+        if (opendetails === true) {
+            getCharacter(setSelectedcharacter, selectedid)
+        }
+    }, [selectedid, opendetails])
 
     const handleChange = (e) => {
-        const page = "page"
         setSearch((prevState) => {
-            return { ...prevState, [page]: 1, [e.target.name]: e.target.value, }
+            return { ...prevState, page: 1, [e.target.name]: e.target.value, }
         })
     }
+    console.log(opendetails, selectedid)
+
 
     return (
         <div className="home" style={{ width: "100%", marginTop: "100px" }}>
